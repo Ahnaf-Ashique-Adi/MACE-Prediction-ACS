@@ -1,41 +1,78 @@
 # Machine Learning Prediction of Major Adverse Cardiac Events (MACE) in Acute Coronary Syndrome
 
-Codebase, leak-free validation pipeline, and analytical derivation for the study:  
-**"Machine learning prediction of major adverse cardiac events in acute coronary syndrome using routine admission data: a comparison of four models"**
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23884663.svg)](https://doi.org/10.5281/zenodo.23884663)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+
 
 ---
 
 ## Repository Contents
 
-* [`MACE_PREDICTION_MODEL.ipynb`](./MACE_PREDICTION_MODEL.ipynb): Full reproducible pipeline implementing stratified 5-fold cross-validation with training-contained imputation, VIF collinearity pruning, feature screening, SMOTE-Tomek balancing, and inner 3-fold CV decision threshold optimization across Logistic Regression, Random Forest, XGBoost, and SVM.
-* [`hypothesis_imputation_formula.pdf`](./hypothesis_imputation_formula.pdf): Analytical derivation and cohort parameter calibration of the closed-form hemodynamic LVEF estimator.
+| File | Description |
+| :--- | :--- |
+| [`MACE_PREDICTION_MODEL.ipynb`](./MACE_PREDICTION_MODEL.ipynb) | Complete Jupyter/Colab notebook executing exploratory data analysis, leak-free stratified 5-fold cross-validation, collinearity pruning via centered VIF, Spearman correlation screening, SMOTE-Tomek rebalancing, and inner 3-fold CV decision threshold optimization for Logistic Regression, Random Forest, XGBoost, and SVM. |
+| [`hypothesis_imputation_formula.pdf`](./hypothesis_imputation_formula.pdf) | Mathematical derivation and cohort calibration document for the closed-form hemodynamic LVEF estimator. |
+| [`CITATION.cff`](./CITATION.cff) | Citation metadata providing direct academic attribution and DOI indexing. |
 
 ---
 
-##  Hemodynamic LVEF Imputation Formulation
+## Hemodynamic LVEF Imputation Formulation
 
-**Formulated by:** Ahnaf Ashique Adi & Taufiq Mustafizur Rahman
+**Methodology & Derivation by:** Ahnaf Ashique Adi & Taufiq Mustafizur Rahman
 
-To prevent cross-patient data leakage during validation, missing Left Ventricular Ejection Fraction (LVEF) was estimated using a physiology-grounded closed-form formula rather than data-wide statistical filling:
+To prevent cross-patient data leakage during cross-validation, missing Left Ventricular Ejection Fraction (LVEF) is estimated using a closed-form physiological formula rather than multi-patient statistical imputation (e.g., MICE or KNN).
 
-$$\text{Cardiac Output (CO)} = \text{HR} \times \text{SV} = \text{HR} \times \text{EDV} \times \text{LVEF}$$
+### Theoretical Basis
+From basic fluid dynamics, pressure approximates forward flow multiplied by peripheral vascular resistance ($R$):
 
-$$\text{SBP} \approx \text{CO} \times R \implies \text{LVEF} \propto \frac{\text{SBP}}{\text{HR}} \implies \text{LVEF} \propto \frac{1}{\text{Shock Index}}$$
+$$\text{CO} = \text{HR} \times \text{SV} = \text{HR} \times \text{EDV} \times \text{LVEF}$$
 
-Accounting for pulmonary fluid escalation (Killip class) and transmural myocardial necrosis penalties (STEMI presentation) empirically calibrated on complete cohort records ($n = 1,054$):
+$$\text{SBP} \approx \text{CO} \times R = (\text{HR} \times \text{EDV} \times \text{LVEF}) \times R$$
+
+Rearranging for myocardial contractility establishes that LVEF varies directly with systolic blood pressure and inversely with heart rate:
+
+$$\text{LVEF} \propto \frac{\text{SBP}}{\text{HR}} \implies \text{LVEF} \propto \frac{1}{\text{Shock Index}}$$
+
+### Calibration & Applied Estimator
+Accounting for pulmonary congestion escalation via Killip classification ($K \in \{1, 2, 3, 4\}$) and transmural myocardial necrosis penalties ($\mathbb{I}_{\text{STEMI}} \in \{0, 1\}$) calibrated on complete cohort records ($n = 1,054$):
 
 $$\hat{\text{LVEF}} = 52.0 - 3.5(K - 1) - 4.0\left(\frac{\text{HR}}{\text{SBP}}\right) - 5.1\,\mathbb{I}_{\text{STEMI}}$$
 
-$$\hat{\text{LVEF}}_{\text{final}} = \min(70, \max(15, \hat{\text{LVEF}}))$$
+To prevent extreme artifacts from acute hemodynamic instability, estimates are clamped to physiological limits:
 
-*The formal proof and fluid dynamic relationships are detailed in [`hypothesis_imputation_formula.pdf`](./hypothesis_imputation_formula.pdf).*
+$$\hat{\text{LVEF}}_{\text{final}} = \min(70.0, \max(15.0, \hat{\text{LVEF}}))$$
+
+*For the complete first-principles proof and step-by-step derivation, refer to [`hypothesis_imputation_formula.pdf`](./hypothesis_imputation_formula.pdf).*
 
 ---
 
-## Authors & Roles
+## Authors & Contributions
 
 * **Khondoker Ashab Zaman** — *Conceptualization, Methodology, Data curation, Formal analysis, Visualization, Investigation, Writing – original draft, Project administration*
 * **Taufiq Mustafizur Rahman** — *Software, Methodology, Formal analysis, Writing – review & editing*
-* **Ahnaf Ashique Adi** — *Software, Imputation Methodology , Investigation, Writing – review & editing*
+* **Ahnaf Ashique Adi** — *Software, Imputation Methodology (Hemodynamic Formulation), Investigation, Writing – review & editing*
 * **Khondoker Qumruzzaman** — *Supervision, Validation, Writing – review & editing*
 * **Umme Kulsum** — *Conceptualization, Supervision, Validation, Writing – review & editing*
+
+---
+
+##  Citation
+
+If you use this codebase, pipeline, or the hemodynamic LVEF formula in your research, please cite the permanent archive:
+
+```bibtex
+@software{zaman_mace_2026,
+  author       = {Zaman, Khondoker Ashab and
+                  Rahman, Taufiq Mustafizur and
+                  Adi, Ahnaf Ashique and
+                  Qumruzzaman, Khondoker and
+                  Kulsum, Umme},
+  title        = {{MACE-Prediction-ACS: Leak-Free MACE Prediction Pipeline \& Hemodynamic LVEF Derivation}},
+  month        = nov,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {v1.0.0},
+  doi          = {10.5281/zenodo.23884663},
+  url          = {[https://doi.org/10.5281/zenodo.23884663](https://doi.org/10.5281/zenodo.23884663)}
+}
