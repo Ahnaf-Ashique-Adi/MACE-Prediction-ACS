@@ -13,7 +13,7 @@
 | :--- | :--- |
 | [`MACE_PREDICTION_MODEL.ipynb`](./MACE_PREDICTION_MODEL.ipynb) | Complete Jupyter/Colab notebook executing exploratory data analysis, leak-free stratified 5-fold cross-validation, collinearity pruning via centered VIF, Spearman correlation screening, SMOTE-Tomek rebalancing, and inner 3-fold CV decision threshold optimization for Logistic Regression, Random Forest, XGBoost, and SVM. |
 | [`hypothesis_imputation_formula.pdf`](./hypothesis_imputation_formula.pdf) | Mathematical derivation and cohort calibration document for the closed-form hemodynamic LVEF estimator. |
-| [`CITATION.cff`](./CITATION.cff) | Citation metadata providing direct academic attribution and DOI indexing. |
+
 
 ---
 
