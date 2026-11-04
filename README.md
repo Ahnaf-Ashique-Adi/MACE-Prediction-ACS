@@ -54,9 +54,9 @@ $$\hat{\text{LVEF}}_{\text{final}} = \min(70.0, \max(15.0, \hat{\text{LVEF}}))$$
 * **Ahnaf Ashique Adi** — *Software, Imputation Methodology (Hemodynamic Formulation), Investigation, Writing – review & editing*
 * **Khondoker Qumruzzaman** — *Supervision, Validation, Writing – review & editing*
 * **Umme Kulsum** — *Conceptualization, Supervision, Validation, Writing – review & editing*
-* **Ahmed Saiful Bari** — * Supervision, Validation, Writing – review & editing*
-* **Md. Abdus Salam** — * Supervision, Validation, Writing – review & editing*
-* **Kibriya Shamim** — * Supervision, Validation, Writing – review & editing*
+* **Ahmed Saiful Bari** — *Supervision, Validation, Writing – review & editing*
+* **Md. Abdus Salam** — *Supervision, Validation, Writing – review & editing*
+* **Kibriya Shamim** — *Supervision, Validation, Writing – review & editing*
 
 ---
 
