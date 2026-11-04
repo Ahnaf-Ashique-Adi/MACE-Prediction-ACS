@@ -54,10 +54,13 @@ $$\hat{\text{LVEF}}_{\text{final}} = \min(70.0, \max(15.0, \hat{\text{LVEF}}))$$
 * **Ahnaf Ashique Adi** — *Software, Imputation Methodology (Hemodynamic Formulation), Investigation, Writing – review & editing*
 * **Khondoker Qumruzzaman** — *Supervision, Validation, Writing – review & editing*
 * **Umme Kulsum** — *Conceptualization, Supervision, Validation, Writing – review & editing*
+* **Ahmed Saiful Bari** — * Supervision, Validation, Writing – review & editing*
+* **Md. Abdus Salam** — * Supervision, Validation, Writing – review & editing*
+* **Kibriya Shamim** — * Supervision, Validation, Writing – review & editing*
 
 ---
 
-##  Citation
+## Citation
 
 If you use this codebase, pipeline, or the hemodynamic LVEF formula in your research, please cite the permanent archive:
 
@@ -67,7 +70,10 @@ If you use this codebase, pipeline, or the hemodynamic LVEF formula in your rese
                   Rahman, Taufiq Mustafizur and
                   Adi, Ahnaf Ashique and
                   Qumruzzaman, Khondoker and
-                  Kulsum, Umme},
+                  Kulsum, Umme and
+                  Bari, Ahmed Saiful and
+                  Salam, Md. Abdus and
+                  Shamim, Kibriya},
   title        = {{MACE-Prediction-ACS: Leak-Free MACE Prediction Pipeline \& Hemodynamic LVEF Derivation}},
   month        = nov,
   year         = 2026,
