@@ -52,7 +52,11 @@ $$\hat{\text{LVEF}}_{\text{final}} = \min(70.0, \max(15.0, \hat{\text{LVEF}}))$$
 * **Khondoker Ashab Zaman** — *Conceptualization, Methodology, Data curation, Formal analysis, Visualization, Investigation, Writing – original draft, Project administration*
 * **Taufiq Mustafizur Rahman** — *Software, Methodology, Formal analysis, Writing – review & editing*
 * **Ahnaf Ashique Adi** — *Software, Imputation Methodology (Hemodynamic Formulation), Investigation, Writing – review & editing*
-* **Khondoker Qumruzzaman** — *Supervision, Validation, Writing – review & editing*
+* **Khondoker Qumruzzaman** — *Supervision, Validation, Resources, Writing – review & editing*
+* **Sayeed Ahmed** — *Investigation, Validation, Writing – review & editing*
+* **Mohammod Zafor Iqbal Jamali** — *Investigation, Validation, Writing – review & editing*
+* **Sohel Mahmud** — *Supervision, Validation, Writing – review & editing*
+* **Harun Or Rashid Mojumder** — *Investigation, Validation, Writing – review & editing*
 * **Umme Kulsum** — *Conceptualization, Supervision, Validation, Writing – review & editing*
 * **Ahmed Saiful Bari** — *Supervision, Validation, Writing – review & editing*
 * **Md. Abdus Salam** — *Supervision, Validation, Writing – review & editing*
@@ -70,6 +74,10 @@ If you use this codebase, pipeline, or the hemodynamic LVEF formula in your rese
                   Rahman, Taufiq Mustafizur and
                   Adi, Ahnaf Ashique and
                   Qumruzzaman, Khondoker and
+                  Ahmed, Sayeed and
+                  Jamali, Mohammod Zafor Iqbal and
+                  Mahmud, Sohel and
+                  Mojumder, Harun Or Rashid and
                   Kulsum, Umme and
                   Bari, Ahmed Saiful and
                   Salam, Md. Abdus and
